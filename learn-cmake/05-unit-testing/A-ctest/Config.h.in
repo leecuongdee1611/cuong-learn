@@ -1,0 +1,4 @@
+// the configured options and settings
+#define demo_ctest_VERSION_MAJOR @demo_ctest_VERSION_MAJOR@
+#define demo_ctest_VERSION_MINOR @demo_ctest_VERSION_MINOR@
+#cmakedefine USE_MYMATH
