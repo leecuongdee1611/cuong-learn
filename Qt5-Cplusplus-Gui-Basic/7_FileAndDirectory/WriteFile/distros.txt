@@ -1,0 +1,5 @@
+Xununtu
+Arch
+Debian
+Redhat
+Slackware

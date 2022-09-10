@@ -1,0 +1,13 @@
+../
+├── doc.txt
+├── include
+│   └── hellomake.h
+├── lib
+└── src
+    ├── hellofunc.c
+    ├── hellomake
+    ├── hellomake.c
+    ├── Makefile
+    └── obj
+
+4 directories, 6 files

@@ -1,0 +1,10 @@
+
+c.preferences.formatOnSaveFiletypes": [
+	"css",
+	"markdown",
+	"typescript",
+	"javascript",
+	"javascriptreact",
+	"typescriptreact",
+	"json"
+],
