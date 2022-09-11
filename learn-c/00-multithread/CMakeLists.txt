@@ -1,3 +1,3 @@
 project(multithread)
-add_subdirectory(A-thread-create)
-add_subdirectory(B-join-detach)
+add_subdirectory(A-basic-thread)
+add_subdirectory(B-detach)

@@ -1,8 +1,8 @@
 #!/bin/bash
 if [ -d "build" ]
 then
-	rm -rf build
-	echo "*** Folder build/ removed"
+	#rm -rf build
+	#echo "*** Folder build/ removed"
 fi
 
 mkdir build
