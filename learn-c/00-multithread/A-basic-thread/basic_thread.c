@@ -11,8 +11,8 @@ Two types of multitasking: process_based and thread_based
 #include <stdlib.h>
 #include <pthread.h>
 
-#define NUM_THREADS 4
-#define USE_DETACH 1
+#define NUM_THREADS 5
+#define USE_DETACH 0
 struct thread_data
 {
 	int thread_id;
@@ -76,6 +76,10 @@ void *print_message_function(void *ptr)
 	{
 		printf("pthread_detach error\n");
 	}
+	// else
+	// {
+	// 	printf("Thread ID: %d. Message: %s\n", my_data->thread_id, my_data->message);
+	// }
 #else
 	printf("Thread ID: %d. Message: %s\n", my_data->thread_id, my_data->message);
 #endif
