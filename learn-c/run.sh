@@ -9,4 +9,5 @@ fi
 make
 
 echo "*** Program Result:"
-./00-multithread/A-basic-thread/basic_thread
+# ./00-multithread/A-basic-thread/basic_thread
+./00-multithread/B-sync-thread/sync_thread
