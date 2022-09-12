@@ -11,7 +11,8 @@ Two types of multitasking: process_based and thread_based
 #include <stdlib.h>
 #include <pthread.h>
 
-#define NUM_THREADS 5
+#define NUM_THREADS 4
+#define USE_DETACH 1
 struct thread_data
 {
 	int thread_id;
@@ -50,10 +51,12 @@ int main(void)
 		/* Wait till threads are complete before main continues. Unless we */
 		/* wait we run the risk of executing an exit which will terminate */
 		/* the process and all threads before the threads have completed. */
+#if USE_DETACH == 0u
 		if (ret == 0) // No error
 		{
 			pthread_join(threads[i], NULL);
 		}
+#endif
 		printf("Thread %d returns: %d\n", i, iret);
 	}
 
@@ -64,6 +67,18 @@ void *print_message_function(void *ptr)
 {
 	struct thread_data *my_data;
 	my_data = (struct thread_data *)ptr;
+	int iret = 0;
+
+#if USE_DETACH
+	printf("pthread_detach using...\n");
+	iret = pthread_detach(pthread_self());
+	if (iret)
+	{
+		printf("pthread_detach error\n");
+	}
+#else
 	printf("Thread ID: %d. Message: %s\n", my_data->thread_id, my_data->message);
+#endif
+
 	pthread_exit(NULL);
 }
