@@ -3,11 +3,10 @@ if [ -d "build" ]
 then
 	cho "*** Removing build data"
 	cd build
-	# rm -rf *
+	rm -rf *
 fi
-# cmake ..
+cmake ..
 make
 
 echo "*** Program Result:"
-# ./00-multithread/A-basic-thread/basic_thread
-./00-multithread/B-sync-thread/sync_thread
+./01-function-pointer/A-replace-switch/replace-switch
