@@ -113,7 +113,7 @@ call plug#end()
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set theme 
-" colorscheme onedark
+colorscheme onedark
 
 " Overwrite some color highlight 
 if (has("autocmd"))
