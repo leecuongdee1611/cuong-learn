@@ -1,2 +1,0 @@
-sudo rmmod main
-dmesg
