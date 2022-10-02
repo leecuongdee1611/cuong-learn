@@ -1,7 +1,7 @@
 cd source
 
 echo "Loading the kernel module"
-sudo insmod static_alloc.ko
+sudo insmod auto_device_file.ko
 
 echo "Useful command such as:"
 echo "lsmod"
