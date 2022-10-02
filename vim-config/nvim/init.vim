@@ -45,7 +45,7 @@ autocmd FileChangedShellPost *
 		\ | echo "File changed on disk. Buffer reloaded."
 		\ | echohl None
 
-
+let g:coc_disable_startup_warning = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
@@ -66,7 +66,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 call plug#begin(stdpath('config').'/plugged')
 " call plug#begin('~/.config/nvim/autoload/plugged')
 " Theme
-	Plug 'joshdick/onedark.vim', 					" Dark theme
+	Plug 'phanviet/vim-monokai-pro'
 
 " File browser
 	Plug 'preservim/nerdTree' 						" File browser  
@@ -113,17 +113,11 @@ call plug#end()
 " => Plugin Setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set theme 
-colorscheme onedark
-
-" Overwrite some color highlight 
-if (has("autocmd"))
-	augroup colorextend
-		autocmd ColorScheme 
-			\ * call onedark#extend_highlight("Comment",{"fg": {"gui": "#728083"}})
-		autocmd ColorScheme 
-			\ * call onedark#extend_highlight("LineNr", {"fg": {"gui": "#728083"}})
-	augroup END
-endif
+set termguicolors
+colorscheme monokai_pro
+let g:lightline = {
+      \ 'colorscheme': 'monokai_pro',
+      \ }
 
 " Disable automatic comment in newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

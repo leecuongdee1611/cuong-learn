@@ -33,6 +33,13 @@ struct _vchar_drv
 	unsigned int open_cnt;
 }vchar_drv;
 
-#define DRIVER_AUTHOR "I'm Test"
+#define DRIVER_AUTHOR "Test Program"
 #define DRIVER_DESC   "A sample character device driver"
 #define DRIVER_VERSION "1.0"
+
+int vchar_hw_init(vchar_dev_t *hw)
+{
+	char *buf;
+
+	buf = kzalloc(NUM_DEV_REGS * REG_SIZE, GFP_KERNEL);
+}
