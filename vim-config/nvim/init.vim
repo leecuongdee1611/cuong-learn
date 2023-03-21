@@ -5,9 +5,9 @@
 call plug#begin(stdpath('config').'/plugged')
 " File browser
   Plug 'preservim/nerdTree'                     " File browser  
+ Plug 'unkiwii/vim-nerdtree-sync'              " Sync current file 
   Plug 'Xuyuanp/nerdtree-git-plugin'            " Git status
   Plug 'ryanoasis/vim-devicons'                 " Icon
-  Plug 'unkiwii/vim-nerdtree-sync'              " Sync current file 
 
 " File search
   Plug 'junegunn/fzf', 
@@ -21,12 +21,9 @@ call plug#begin(stdpath('config').'/plugged')
 " Terminal
   Plug 'voldikss/vim-floaterm'                  " Float terminal
 
-" Code syntax highlight
-  Plug 'yuezk/vim-js'                           " Javascript
-  Plug 'MaxMEllon/vim-jsx-pretty'               " JSX/React
-  Plug 'jackguo380/vim-lsp-cxx-highlight'       " C/C++
-  Plug 'uiiaoo/java-syntax.vim'                 " Java
-  
+" Theme
+  Plug 'phanviet/vim-monokai-pro'
+
 " Debugging
   Plug 'puremourning/vimspector'                " Vimspector
 
@@ -35,30 +32,14 @@ call plug#begin(stdpath('config').'/plugged')
   Plug 'tpope/vim-rhubarb' 
   Plug 'airblade/vim-gitgutter'                 " Git show changes 
   Plug 'samoshkin/vim-mergetool'                " Git merge
-  
-" Code intellisense
-	Plug 'jiangmiao/auto-pairs'                   " Parenthesis auto 
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'pappasam/coc-jedi',                     " Jedi language server 
-	
+
+" Code syntax highlight
+  Plug 'yuezk/vim-js'                           " Javascript
+  Plug 'MaxMEllon/vim-jsx-pretty'               " JSX/React
+  Plug 'jackguo380/vim-lsp-cxx-highlight'       " C/C++
+  Plug 'uiiaoo/java-syntax.vim'                 " Java
+
 call plug#end()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Other Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
-  execute 'source' setting_file
-endfor
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Key mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
-" Resize pane
-nmap <C-S-Right> :vertical resize -1<CR>    
-nmap <C-S-Left> :vertical resize +1<CR>
-nmap <C-S-Down> :resize -1<CR>
-nmap <C-S-Up> :resize +1<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General settings
@@ -86,17 +67,35 @@ set synmaxcol=200
 set lazyredraw
 au! BufNewFile,BufRead *.json set foldmethod=indent " Change foldmethod for specific filetype
 
-" Auto reload content changed outside
-au CursorHold,CursorHoldI * checktime
-au FocusGained,BufEnter * :checktime
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-    \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == ''
-      \ | checktime 
-    \ | endif
-autocmd FileChangedShellPost *
-    \ echohl WarningMsg 
-    \ | echo "File changed on disk. Buffer reloaded."
-    \ | echohl None
+" Enable copying from vim to clipboard
+if has('win32')
+  set clipboard=unnamed  
+else
+  set clipboard=unnamedplus
+endif
 
-" Disable automatic comment in newline
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Key mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" Resize pane
+nmap <C-S-Right> :vertical resize -1<CR>    
+nmap <C-S-Left> :vertical resize +1<CR>
+nmap <C-S-Down> :resize -1<CR>
+nmap <C-S-Up> :resize +1<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Other setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+for setting_file in split(glob(stdpath('config').'/settings/*.vim'))
+  execute 'source' setting_file
+endfor
+
+" Set theme 
+set termguicolors
+colorscheme monokai_pro
+let g:lightline = {
+      \ 'colorscheme': 'monokai_pro',
+      \ }
+	
+" Set Nerd Font for icon
+set guifont=DroidSansMono_Nerd_Font:h11
