@@ -28,7 +28,7 @@ call plug#begin(stdpath('config').'/plugged')
   Plug 'uiiaoo/java-syntax.vim'                 " Java
   
 " Debugging
-  "Plug 'puremourning/vimspector'                " Vimspector
+  Plug 'puremourning/vimspector'                " Vimspector
 
 " Source code version control 
   Plug 'tpope/vim-fugitive'                     " Git infomation 
@@ -39,6 +39,7 @@ call plug#begin(stdpath('config').'/plugged')
 " Code intellisense
 	Plug 'jiangmiao/auto-pairs'                   " Parenthesis auto 
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'pappasam/coc-jedi',                     " Jedi language server 
 	
 call plug#end()
 

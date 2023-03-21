@@ -5,6 +5,8 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'coc-pyright',
       \'coc-vimlsp',
+      \'coc-cmake',
+	    \'coc-clangd',
       \]
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
